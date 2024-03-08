@@ -13,6 +13,8 @@ app.get('/api/cursos', (req, res) => {
   res.send(JSON.stringify(infoCursos));
 });
 
+// Programacion
+
 app.get('/api/cursos/programacion', (req, res) => {
   res.send(JSON.stringify(infoCursos.programacion))
 });
@@ -28,8 +30,21 @@ app.get('/api/cursos/programacion/:lenguaje', (req, res) => {
   res.send(JSON.stringify(resultados));
 });
 
+// Matematicas
+
 app.get('/api/cursos/matematicas', (req, res) => {
   res.send(JSON.stringify(infoCursos.matematicas))
+});
+
+app.get('/api/cursos/matematicas/:tema', (req, res) => {
+  const tema = req.params.tema;
+  const resultados = infoCursos.matematicas.filter(curso => curso.tema === tema);
+
+  if(resultados.length === 0) {
+    return res.status(404).send(`No se encontraron cursos con el tema ${lenguaje}`)
+  }
+
+  res.send(JSON.stringify(resultados));
 });
 
 const PUERTO = process.env.PORT || 3000
