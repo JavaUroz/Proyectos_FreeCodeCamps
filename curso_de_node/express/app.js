@@ -10,6 +10,9 @@ const { infoCursos } = require('./datos/cursos');
 const routerMatematicas = require('./routers/matematicas.js');
 app.use('/api/cursos/matematicas', routerMatematicas);
 
+const routerProgramacion = require('./routers/programacion.js');
+app.use('/api/cursos/programacion', routerProgramacion);
+
 // Routing
 
 app.get('/', (req, res) => {
